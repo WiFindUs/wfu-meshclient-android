@@ -55,8 +55,6 @@
                 android:padding="5dp"
                 />
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,9 +62,6 @@
                 android:orientation="horizontal"
                 android:layout_below="@+id/deviceSettingsText"
                 android:layout_marginTop="10dp">
-
-
-
 
                 <!-- Wi-Fi -->
                 <LinearLayout
@@ -103,8 +98,6 @@
 
 
 
-
-
                 <!-- GPS -->
                 <LinearLayout
                     android:orientation="vertical"
@@ -134,7 +127,6 @@
                         android:text="GPS"
                         android:textSize="18sp"
                         android:textStyle="bold"
-
                         />
 
                 </LinearLayout>
@@ -176,14 +168,6 @@
             </LinearLayout>
 
 
-
-
-
-
-
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -220,8 +204,6 @@
                         android:text="WiFindUs Network"
                         android:textSize="18sp"
                         android:textStyle="bold"
-
-
                         />
 
                 </LinearLayout>
@@ -273,7 +255,6 @@
                         android:text="Signal Strength"
                         android:textSize="18sp"
                         android:textStyle="bold"
-
                         />
 
                 </LinearLayout>
@@ -312,7 +293,6 @@
                             android:textColor="#FFFFFF"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"/>
-
                     </RelativeLayout>
 
                     <TextView
@@ -332,12 +312,6 @@
 
             <!-- ================= END :: DEVICE SETTINGS ================= -->
 
-
-
-
-
-
-
             <TextView
                 android:id="@+id/settingsText"
                 android:text="Settings"
@@ -350,8 +324,6 @@
                 android:layout_below="@+id/deviceSettingsLine2"
                 android:layout_marginTop="10dp"
                 />
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -381,11 +353,7 @@
                         android:onClick="forceMeshWiFi"
                         />
 
-
-
                     <TextView
-
-
                         android:id="@+id/forceMeshLabel"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -394,11 +362,8 @@
                         android:text="Force Mesh Wi-Fi"
                         android:textSize="18sp"
                         android:textStyle="bold"
-
                         />
 
-
-
                 </LinearLayout>
 
 
@@ -407,9 +372,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".30">
-
-
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -417,21 +379,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".30">
-
-
-
                 </LinearLayout>
 
 
             </LinearLayout>
-
-
-
-
-
-
-
-
 
             <TextView
                 android:id="@+id/advancedText"
@@ -455,10 +406,6 @@
                 android:orientation="horizontal"
                 android:layout_below="@+id/advancedText"
                 android:layout_marginTop="10dp">
-
-
-
-
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -501,9 +448,6 @@
                     android:gravity="center|right"/>
 
             </LinearLayout>
-
-
-
 
             <!-- Server IP -->
             <LinearLayout

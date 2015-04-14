@@ -12,13 +12,13 @@ import java.util.Map;
 
 public class DrawerListAdapter extends BaseAdapter
 {
-    public final Map<String, Adapter> sections = new LinkedHashMap<String, Adapter>();
+    public final Map<String, Adapter> sections = new LinkedHashMap<>();
     public final ArrayAdapter<String> headers;
     public final static int TYPE_SECTION_HEADER = 0;
 
     public DrawerListAdapter(Context context)
     {
-        headers = new ArrayAdapter<String>(context, R.layout.list_header);
+        headers = new ArrayAdapter<>(context, R.layout.list_header);
     }
 
     public void addSection(String section, Adapter adapter)
@@ -27,7 +27,9 @@ public class DrawerListAdapter extends BaseAdapter
         this.sections.put(section, adapter);
     }
 
-
+    //==============================================================================================
+    // Get Item
+    //==============================================================================================
     public Object getItem(int position)
     {
         for (Object section : this.sections.keySet())
@@ -44,26 +46,45 @@ public class DrawerListAdapter extends BaseAdapter
         }
         return null;
     }
+    //==============================================================================================
+    // END :: Get Item
+    //==============================================================================================
 
+
+    //==============================================================================================
+    // Get number of items in list including headers
+    //==============================================================================================
     public int getCount()
     {
-        // total together all sections, plus one for each section header
         int total = 0;
         for (Adapter adapter : this.sections.values())
             total += adapter.getCount() + 1;
         return total;
     }
+    //==============================================================================================
+    // END :: Get number of items in list including headers
+    //==============================================================================================
 
+
+    //==============================================================================================
+    // Get number of items in list excluding headers (Count All Headers as 1)
+    //==============================================================================================
     @Override
     public int getViewTypeCount()
     {
-        // assume that headers count as one, then total all sections
         int total = 1;
         for (Adapter adapter : this.sections.values())
             total += adapter.getViewTypeCount();
         return total;
     }
+    //==============================================================================================
+    // END :: Get number of items in list excluding headers (Count All Headers as 1)
+    //==============================================================================================
 
+
+    //==============================================================================================
+    // Get type of an item
+    //==============================================================================================
     @Override
     public int getItemViewType(int position)
     {
@@ -73,52 +94,72 @@ public class DrawerListAdapter extends BaseAdapter
             Adapter adapter = sections.get(section);
             int size = adapter.getCount() + 1;
 
-            // check if position inside this section
+            //check for position in current section
             if (position == 0) return TYPE_SECTION_HEADER;
             if (position < size) return type + adapter.getItemViewType(position - 1);
 
-            // otherwise jump into next section
+            //go to next section if not found
             position -= size;
             type += adapter.getViewTypeCount();
         }
         return -1;
     }
+    //==============================================================================================
+    // END :: Get type of an item
+    //==============================================================================================
 
-    public boolean areAllItemsSelectable()
-    {
-        return false;
-    }
 
+
+    //==============================================================================================
+    // Only items (Not Headers) are enabled
+    //==============================================================================================
     @Override
     public boolean isEnabled(int position)
     {
         return (getItemViewType(position) != TYPE_SECTION_HEADER);
     }
+    //==============================================================================================
+    // END :: Only items (Not Headers) are enabled
+    //==============================================================================================
 
+
+    //==============================================================================================
+    // Get View
+    //==============================================================================================
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        int sectionnum = 0;
+        int sectionNum = 0;
         for (Object section : this.sections.keySet())
         {
             Adapter adapter = sections.get(section);
             int size = adapter.getCount() + 1;
 
-            // check if position inside this section
-            if (position == 0) return headers.getView(sectionnum, convertView, parent);
+            //check for position in current section
+            if (position == 0) return headers.getView(sectionNum, convertView, parent);
             if (position < size) return adapter.getView(position - 1, convertView, parent);
 
-            // otherwise jump into next section
+            //go to next section if not found
             position -= size;
-            sectionnum++;
+            sectionNum++;
         }
         return null;
     }
+    //==============================================================================================
+    // END :: Get View
+    //==============================================================================================
 
+
+    //==============================================================================================
+    // Get Item ID
+    //==============================================================================================
     @Override
     public long getItemId(int position)
     {
         return position;
     }
+    //==============================================================================================
+    // END :: Get Item ID
+    //==============================================================================================
 
 }

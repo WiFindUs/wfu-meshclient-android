@@ -7,22 +7,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- */
 public class NavigationDrawerFragment extends Fragment
 {
-
     private View containerView;
     public static final String PREF_FILE_NAME="testPref";
     public static final String KEY_USER_LEARNED_DRAWER="user_learned_drawer";
@@ -31,12 +23,8 @@ public class NavigationDrawerFragment extends Fragment
     private boolean mUserLearnedDrawer; //User has learned of drawer's existence
     private boolean mFromSavedInstance;
 
-    //Recycler View
-    private RecyclerView myRecyclerView;
-    private InformationAdapter myAdapter;
-
     public NavigationDrawerFragment() {
-        // Required empty public constructor
+        //empty but required
     }
 
     @Override
@@ -53,51 +41,15 @@ public class NavigationDrawerFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        myAdapter = new InformationAdapter(getActivity(), getData());
-
-      /*  myRecyclerView = (RecyclerView)layout.findViewById(R.id.myDrawerList);
-        myRecyclerView.setAdapter(myAdapter);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));*/
-
         return layout;
     }
 
-    public static List<Information> getData()
-    {
-        List<Information> data = new ArrayList<>();
-        int[] icons={R.mipmap.ic_action, R.mipmap.ic_search};
-        String[] titles={"My Device", "My Incidents"};
-
-
-        //,"Map", "People", "Locations", "Nodes", "Log", "About App", "Log", "About App"
-
-        for(int i  =0; i < titles.length && i<icons.length; i++)
-        {
-            Information current = new Information();
-            current.iconId=icons[i];
-            current.title=titles[i];
-
-
-
-
-            data.add(current);
-
-        }
-        return data;
-    }
-
-
-
-
-
-    //===================================================================================================
+    //==============================================================================================
     // Setting Up
-    //===================================================================================================
+    //==============================================================================================
     public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar)
     {
         containerView=getActivity().findViewById(fragmentId);
@@ -153,9 +105,10 @@ public class NavigationDrawerFragment extends Fragment
         return sharedPreferences.getString(preferenceName,defaultValue);
     }
 
+    //==============================================================================================
+    // END :: Setting Up
+    //==============================================================================================
 
 
 
-
-    //===================================================================================================
 }
