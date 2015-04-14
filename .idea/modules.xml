@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/wfu-meshclient-android.iml" filepath="$PROJECT_DIR$/wfu-meshclient-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wfu-meshclient-android-master.iml" filepath="$PROJECT_DIR$/wfu-meshclient-android-master.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,649 @@
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Tool Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tool_bar_layout"
+
+        tools:context=".MainActivity">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar">
+        </include>
+
+    </RelativeLayout>
+    <!-- END :: Tool Bar -->
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_below="@+id/tool_bar_layout"
+        android:id="@+id/my_device_scroll_view"
+        android:layout_marginTop="55dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity"
+            >
+
+
+
+
+            <!-- ==================== DEVICE SETTINGS ==================== -->
+            <TextView
+                android:id="@+id/deviceSettingsText"
+                android:text="Status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#839ED1"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="5dp"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/deviceSettings"
+                android:orientation="horizontal"
+                android:layout_below="@+id/deviceSettingsText"
+                android:layout_marginTop="10dp">
+
+
+
+
+                <!-- Wi-Fi -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:id="@+id/wifi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/wifi_red"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+
+                        android:id="@+id/textLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/wifi"
+                        android:gravity="center"
+                        android:text="Wi-Fi"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+                <!-- GPS -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:id="@+id/gps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="WiFi"
+                        android:src="@drawable/gps_red"
+                        android:layout_gravity="center_horizontal" />
+
+                    <TextView
+
+                        android:id="@+id/gpsLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/gps"
+                        android:gravity="center"
+                        android:text="GPS"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+
+                <!-- Airplane Mode -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="WiFi"
+                        android:src="@drawable/airplane_red"
+                        android:id="@+id/airplaneMode"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <TextView
+                        android:id="@+id/airplaneModeLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/wifi"
+                        android:gravity="center"
+                        android:text="Airplane Mode"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/deviceSettingsLine2"
+                android:orientation="horizontal"
+                android:layout_below="@+id/deviceSettings"
+                android:layout_marginTop="10dp">
+
+                <!-- WFU Network -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mesh_red"
+                        android:id="@+id/wfuNetwork"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <TextView
+                        android:id="@+id/wfuNetworkLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/wfuNetwork"
+                        android:gravity="center"
+                        android:text="WiFindUs Network"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+
+                        />
+
+                </LinearLayout>
+
+                <!-- Signal Strength -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Signal Strength"
+                        android:src="@drawable/blank_red"
+                        android:id="@+id/signalStrength"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <TextView
+
+                        android:id="@+id/signalStrengthLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/signalStrength"
+                        android:gravity="center"
+                        android:text="Signal Strength"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+
+                <!-- Battery -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="WiFi"
+                        android:src="@drawable/blank_red"
+                        android:id="@+id/battery"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <TextView
+
+                        android:id="@+id/batteryLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/battery"
+                        android:gravity="center"
+                        android:text="Battery"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ================= END :: DEVICE SETTINGS ================= -->
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/settingsText"
+                android:text="Settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#839ED1"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="5dp"
+                android:layout_below="@+id/deviceSettingsLine2"
+                android:layout_marginTop="10dp"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/advancedDeviceSettings"
+                android:orientation="horizontal"
+                android:layout_below="@+id/settingsText"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="90dp"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="WiFi"
+                        android:src="@drawable/mesh_gray"
+                        android:id="@+id/forceMesh"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+
+
+                    <TextView
+
+
+                        android:id="@+id/forceMeshLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@id/forceMesh"
+                        android:gravity="center"
+                        android:text="Force Mesh Wi-Fi"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        />
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30">
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/advancedText"
+                android:text="Advanced"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#839ED1"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="5dp"
+                android:layout_below="@+id/advancedDeviceSettings"
+                android:layout_marginTop="10dp"
+                />
+
+
+            <!-- Device ID -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/deviceID"
+                android:orientation="horizontal"
+                android:layout_below="@+id/advancedText"
+                android:layout_marginTop="10dp">
+
+
+
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/deviceIDIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="40dp"
+                        android:maxHeight="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mesh_blue"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+
+                        android:id="@+id/deviceIDIconLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="Device ID:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/deviceIDText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="D1H54J"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    android:gravity="center|right"/>
+
+            </LinearLayout>
+
+
+
+
+            <!-- Server IP -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/serverIP"
+                android:orientation="horizontal"
+                android:layout_below="@+id/deviceID"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/serverIPIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="40dp"
+                        android:maxHeight="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mesh_blue"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+
+                        android:id="@+id/serverIPLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="Server IP:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/serverIPText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="172.12.202.1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center|right"/>
+
+            </LinearLayout>
+
+
+            <!-- Last Update -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastUpdate"
+                android:orientation="horizontal"
+                android:layout_below="@+id/serverIP"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/lastUpdateIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="40dp"
+                        android:maxHeight="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mesh_blue"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+
+                        android:id="@+id/lastUpdateLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="Last Update:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/lastUpdateText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="4 minutes ago"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center|right"/>
+
+            </LinearLayout>
+
+
+            <!-- Connected Since -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/connectedSince"
+                android:orientation="horizontal"
+                android:layout_below="@+id/lastUpdate"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/connectedSinceIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="40dp"
+                        android:maxHeight="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mesh_blue"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+
+                        android:id="@+id/connectedSinceLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="Connected Since:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/connectedSinceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="13:48"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center|right"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+    <!-- END :: Main Content -->
+
+
+    <!-- Navigation Drawer -->
+    <fragment
+        android:id="@+id/fragment_navigation_drawer"
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_navigation_drawer"
+        android:name="com.wifindus.meshclient.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" />
+    <!-- END :: Navigation Drawer -->
+
+
+
+
+</android.support.v4.widget.DrawerLayout>
+
+
+
