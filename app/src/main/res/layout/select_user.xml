@@ -17,21 +17,29 @@ tools:context=".MainActivity">
 </include>
 
 
-
+<!--
 <Button
     android:layout_below="@+id/tool_bar"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:text="I am actually a cat"
     android:onClick="userSelected"
-    android:id="@+id/cat_button"/>
+    android:id="@+id/cat_button"/> -->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cat_button"
-        android:id="@+id/users_name_message"
-        android:text="drthserthj: "/>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/tool_bar"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:layout_marginLeft="10px"
+        />
+
 
 
 </RelativeLayout>

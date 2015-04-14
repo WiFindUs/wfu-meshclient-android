@@ -12,9 +12,6 @@ import android.widget.Toast;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Mitchell on 8/04/2015.
- */
 public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
@@ -40,17 +37,6 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
         Information current = data.get(position);
         holder.title.setText(current.title);
         holder.icon.setImageResource(current.iconId);
-
-
-        //Listener for when item is clicked on
-       /* holder.icon.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Toast.makeText(v.getContext(), "Item clicked at "+position, Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
     @Override

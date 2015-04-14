@@ -233,18 +233,35 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".30">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:maxWidth="90dp"
-                        android:maxHeight="90dp"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:scaleType="fitCenter"
-                        android:contentDescription="Signal Strength"
-                        android:src="@drawable/blank_red"
-                        android:id="@+id/signalStrength"
-                        android:layout_gravity="center_horizontal"
-                        />
+                        android:id="@+id/signalStrength">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxWidth="90dp"
+                            android:maxHeight="90dp"
+                            android:src="@drawable/blank_red"
+                            android:id="@+id/signalStrength_image"
+                            android:layout_centerHorizontal="true"/>
+
+                        <TextView
+                            android:id="@+id/signalStrengthPercentage"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="0%"
+                            android:textSize="40sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+
+                    </RelativeLayout>
 
                     <TextView
 
@@ -268,18 +285,35 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".30">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:id="@+id/battery">
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
                         android:maxWidth="90dp"
                         android:maxHeight="90dp"
-                        android:scaleType="fitCenter"
-                        android:contentDescription="WiFi"
                         android:src="@drawable/blank_red"
-                        android:id="@+id/battery"
-                        android:layout_gravity="center_horizontal"
-                        />
+                        android:id="@+id/battery_image"
+                        android:layout_centerHorizontal="true"/>
+
+                        <TextView
+                            android:id="@+id/batteryPercentage"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="0%"
+                            android:textSize="40sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+
+                    </RelativeLayout>
 
                     <TextView
 
@@ -344,6 +378,7 @@
                         android:src="@drawable/mesh_gray"
                         android:id="@+id/forceMesh"
                         android:layout_gravity="center_horizontal"
+                        android:onClick="forceMeshWiFi"
                         />
 
 
@@ -438,7 +473,7 @@
                         android:maxWidth="40dp"
                         android:maxHeight="40dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/mesh_blue"
+                        android:src="@drawable/device_blue"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="15dp"/>
 
@@ -462,7 +497,7 @@
                     android:text="D1H54J"
                     android:textSize="18sp"
                     android:textStyle="bold"
-
+                    android:layout_marginRight="10dp"
                     android:gravity="center|right"/>
 
             </LinearLayout>
@@ -492,7 +527,7 @@
                         android:maxWidth="40dp"
                         android:maxHeight="40dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/mesh_blue"
+                        android:src="@drawable/device_blue"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="15dp"/>
 
@@ -516,7 +551,8 @@
                     android:text="172.12.202.1"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:gravity="center|right"/>
+                    android:gravity="center|right"
+                    android:layout_marginRight="10dp"/>
 
             </LinearLayout>
 
@@ -543,7 +579,7 @@
                         android:maxWidth="40dp"
                         android:maxHeight="40dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/mesh_blue"
+                        android:src="@drawable/stopwatch_blue"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="15dp"/>
 
@@ -567,7 +603,8 @@
                     android:text="4 minutes ago"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:gravity="center|right"/>
+                    android:gravity="center|right"
+                    android:layout_marginRight="10dp"/>
 
             </LinearLayout>
 
@@ -594,7 +631,7 @@
                         android:maxWidth="40dp"
                         android:maxHeight="40dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/mesh_blue"
+                        android:src="@drawable/stopwatch_blue"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="15dp"/>
 
@@ -618,7 +655,8 @@
                     android:text="13:48"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:gravity="center|right"/>
+                    android:gravity="center|right"
+                    android:layout_marginRight="10dp"/>
 
             </LinearLayout>
 
