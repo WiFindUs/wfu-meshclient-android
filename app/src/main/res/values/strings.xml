@@ -12,4 +12,18 @@
     <string name="login_button_text">Login</string>
 
     <string name="organisation_prompt">Organisation</string>
+    <string name="status_label">Status</string>
+    <string name="wifi_label">Wi-Fi</string>
+    <string name="gps_label">GPS</string>
+    <string name="airplane_label">Airplane Mode</string>
+    <string name="wfu_network_label">WiFindUs Network</string>
+    <string name="signal_strength_label">Signal Strength</string>
+    <string name="battery_label">Battery</string>
+    <string name="settings_label">Settings</string>
+    <string name="force_mesh_label">Force Mesh Wi-Fi</string>
+    <string name="advanced_label">Advanced</string>
+    <string name="id_label">Device ID:</string>
+    <string name="server_ip_label">Server IP:</string>
+    <string name="last_update_label">Last Update:</string>
+    <string name="connected_since_label">Connected Since:</string>
 </resources>

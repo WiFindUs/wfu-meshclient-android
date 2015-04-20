@@ -1,16 +1,22 @@
 package com.wifindus.meshclient;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-//import android.support.v7.widget.LinearLayoutManager;
-//import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +32,24 @@ public class MapActivity extends ActionBarActivity {
     String organisation;
     String name;
     int profilePicture;
+
+    ImageView mapImage;
+
+    Double userLatOnMap;
+    Double userLongOnMap;
+
+    Bitmap deviceMarkerBitmap = null;
+
+    //latitude and longitude of map corners
+    Double mapStartLat = 34.973711;
+    Double mapEndLat = 34.980847;
+    Double mapStartLong = 138.843886;
+    Double mapEndLong = 138.851144;
+
+    //User position
+    Double userLat = 34.976461;
+    Double userLong = 138.847014;
+
 
     //==============================================================================================
     // Drawer List Variables
@@ -112,6 +136,10 @@ public class MapActivity extends ActionBarActivity {
         //==========================================================================================
 
 
+        mapImage = (ImageView) findViewById(R.id.mapSource);
+        loadMapImage();
+
+
     }
 
 
@@ -136,6 +164,111 @@ public class MapActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+    public void loadMapImage()
+    {
+        Bitmap map = GenerateMap();
+        if(map != null)
+        {
+            mapImage.setImageBitmap(map);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "something went wrong :(", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private Bitmap GenerateMap()
+    {
+        Bitmap mapBitmap = null;
+        Bitmap newMapBitmap = null;
+
+        mapBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.oakbank);
+        Bitmap.Config config = mapBitmap.getConfig();
+
+        if(config == null)
+        {
+            config = Bitmap.Config.ARGB_8888;
+        }
+
+        //Create new canvas using map image
+        newMapBitmap = Bitmap.createBitmap(mapBitmap.getWidth(), mapBitmap.getHeight(), config);
+        Canvas mapCanvas = new Canvas(newMapBitmap);
+        mapCanvas.drawBitmap(mapBitmap, 0, 0, null);
+
+        Double mapLatDifference = mapEndLat - mapStartLat;
+        Double mapLongDifference = mapEndLong - mapStartLong;
+
+        Double userLatDifference = userLat - mapStartLat;
+        Double userLongDifference = userLong - mapStartLong;
+
+        Double userLatPercentage = (userLatDifference/mapLatDifference);
+        Double userLongPercentage = (userLongDifference/mapLongDifference);
+
+        userLatOnMap = mapCanvas.getHeight() * userLatPercentage;
+        userLongOnMap = mapCanvas.getWidth() * userLongPercentage;
+
+        // Draw another image to canvas
+        deviceMarkerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.blank_blue);
+        int iconSizeModifier = mapCanvas.getWidth()/20;
+        Bitmap resizedDeviceMarkerBitmap;
+        resizedDeviceMarkerBitmap = resizeBitmap(deviceMarkerBitmap, iconSizeModifier, iconSizeModifier);
+        mapCanvas.drawBitmap(resizedDeviceMarkerBitmap, userLongOnMap.intValue() - (resizedDeviceMarkerBitmap.getWidth()/2), userLatOnMap.intValue() - (resizedDeviceMarkerBitmap.getHeight()/2), null);
+        // END :: Draw another image to canvas
+
+
+        String[] splitName = name.split("\\s+");
+        char firstInitial = splitName[0].charAt(0);
+        char lastInitial = splitName[1].charAt(0);
+
+
+        Context context = getApplicationContext();
+        CharSequence text = splitName[0]+"  "+splitName[1];
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        //Paint Text
+        String captionString = firstInitial+""+lastInitial;
+        Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paintText.setColor(Color.WHITE);
+        paintText.setTextSize(30);
+        paintText.setStyle(Paint.Style.FILL);
+
+        Rect rectText = new Rect();
+        paintText.getTextBounds(captionString, 0, captionString.length(), rectText);
+
+        mapCanvas.drawText(captionString, userLongOnMap.intValue()-20, userLatOnMap.intValue()+10, paintText);
+
+        return newMapBitmap;
+    }
+
+
+
+    //==============================================================================================
+    // Resize Bitmap
+    //==============================================================================================
+    public Bitmap resizeBitmap(Bitmap imageBitmap, int newHeight, int newWidth)
+    {
+        int originalWidth = imageBitmap.getWidth();
+        int originalHeight = imageBitmap.getHeight();
+        float scaleWidth = ((float) newWidth) / originalWidth;
+        float scaleHeight = ((float) newHeight) / originalHeight;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap resizedBitmap = Bitmap.createBitmap(imageBitmap, 0, 0, originalWidth, originalHeight, matrix, false);
+        return resizedBitmap;
+    }
+    //==============================================================================================
+    // END :: Resize Bitmap
+    //==============================================================================================
+
+
+
+
+
 
 
 
@@ -216,6 +349,41 @@ public class MapActivity extends ActionBarActivity {
     //==============================================================================================
     // END :: Select new activity in drawer
     //==============================================================================================
+
+/*
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+
+        Context context = getApplicationContext();
+        CharSequence text = "The user was touched by your actions";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        float x = event.getX();
+        float y = event.getY();
+
+
+        switch(event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+                //Check if the x and y position of the touch is inside the bitmap
+                if( x > userLongOnMap && x < userLongOnMap + deviceMarkerBitmap.getWidth() && y > userLatOnMap && y < userLatOnMap + deviceMarkerBitmap.getHeight() )
+                {
+                   Context context = getApplicationContext();
+                    CharSequence text = "user touched icon";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                return true;
+        }
+        return false;
+    }
+*/
+
+
 
 }
 

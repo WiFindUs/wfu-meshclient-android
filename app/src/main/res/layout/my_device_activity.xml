@@ -46,7 +46,7 @@
             <!-- ==================== DEVICE SETTINGS ==================== -->
             <TextView
                 android:id="@+id/deviceSettingsText"
-                android:text="Status"
+                android:text="@string/status_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#839ED1"
@@ -88,7 +88,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/wifi"
                         android:gravity="center"
-                        android:text="Wi-Fi"
+                        android:text="@string/wifi_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
 
@@ -124,7 +124,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/gps"
                         android:gravity="center"
-                        android:text="GPS"
+                        android:text="@string/gps_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         />
@@ -157,7 +157,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/wifi"
                         android:gravity="center"
-                        android:text="Airplane Mode"
+                        android:text="@string/airplane_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
 
@@ -201,7 +201,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/wfuNetwork"
                         android:gravity="center"
-                        android:text="WiFindUs Network"
+                        android:text="@string/wfu_network_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         />
@@ -252,7 +252,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/signalStrength"
                         android:gravity="center"
-                        android:text="Signal Strength"
+                        android:text="@string/signal_strength_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         />
@@ -302,7 +302,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/battery"
                         android:gravity="center"
-                        android:text="Battery"
+                        android:text="@string/battery_label"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -314,7 +314,7 @@
 
             <TextView
                 android:id="@+id/settingsText"
-                android:text="Settings"
+                android:text="@string/settings_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#839ED1"
@@ -359,7 +359,7 @@
                         android:layout_height="fill_parent"
                         android:layout_below="@id/forceMesh"
                         android:gravity="center"
-                        android:text="Force Mesh Wi-Fi"
+                        android:text="@string/force_mesh_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         />
@@ -386,7 +386,7 @@
 
             <TextView
                 android:id="@+id/advancedText"
-                android:text="Advanced"
+                android:text="@string/advanced_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#839ED1"
@@ -430,7 +430,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
-                        android:text="Device ID:"
+                        android:text="@string/id_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginLeft="5dp"/>
@@ -481,7 +481,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
-                        android:text="Server IP:"
+                        android:text="@string/server_ip_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginLeft="5dp"/>
@@ -533,7 +533,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
-                        android:text="Last Update:"
+                        android:text="@string/last_update_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginLeft="5dp"/>
@@ -585,7 +585,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
-                        android:text="Connected Since:"
+                        android:text="@string/connected_since_label"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginLeft="5dp"/>
