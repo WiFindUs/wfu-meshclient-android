@@ -211,24 +211,16 @@ public class MapActivity extends ActionBarActivity {
         userLongOnMap = mapCanvas.getWidth() * userLongPercentage;
 
         // Draw another image to canvas
-        deviceMarkerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.blank_blue);
-        int iconSizeModifier = mapCanvas.getWidth()/20;
-        Bitmap resizedDeviceMarkerBitmap;
-        resizedDeviceMarkerBitmap = resizeBitmap(deviceMarkerBitmap, iconSizeModifier, iconSizeModifier);
-        mapCanvas.drawBitmap(resizedDeviceMarkerBitmap, userLongOnMap.intValue() - (resizedDeviceMarkerBitmap.getWidth()/2), userLatOnMap.intValue() - (resizedDeviceMarkerBitmap.getHeight()/2), null);
+        deviceMarkerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.device_marker);
+        Bitmap resizedDeviceMarkerBitmap = null;
+        resizedDeviceMarkerBitmap = resizeBitmap(deviceMarkerBitmap, mapCanvas.getWidth()/12, mapCanvas.getWidth()/20);
+        mapCanvas.drawBitmap(resizedDeviceMarkerBitmap, userLongOnMap.intValue() - ((resizedDeviceMarkerBitmap.getWidth()/2)-10), userLatOnMap.intValue() - resizedDeviceMarkerBitmap.getHeight(), null);
         // END :: Draw another image to canvas
 
 
         String[] splitName = name.split("\\s+");
         char firstInitial = splitName[0].charAt(0);
         char lastInitial = splitName[1].charAt(0);
-
-
-        Context context = getApplicationContext();
-        CharSequence text = splitName[0]+"  "+splitName[1];
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
 
         //Paint Text
         String captionString = firstInitial+""+lastInitial;
@@ -240,7 +232,7 @@ public class MapActivity extends ActionBarActivity {
         Rect rectText = new Rect();
         paintText.getTextBounds(captionString, 0, captionString.length(), rectText);
 
-        mapCanvas.drawText(captionString, userLongOnMap.intValue()-20, userLatOnMap.intValue()+10, paintText);
+        mapCanvas.drawText(captionString, userLongOnMap.intValue()-(resizedDeviceMarkerBitmap.getWidth()/4), userLatOnMap.intValue()-resizedDeviceMarkerBitmap.getHeight()/2-10, paintText);
 
         return newMapBitmap;
     }
